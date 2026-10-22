@@ -1,0 +1,29 @@
+# Datasheet — NHANES 1999-2002 analysis file (age >= 50, DNA methylation, linked mortality)
+
+## 1. Motivation
+
+Purpose: to test whether a composite of routine biomarkers (reduced BSI) adds mortality prognosis over age, sex, an epigenetic clock and allostatic load, as an exploratory step of a doctoral project (ChroniCare-AI, UNMSM). We did not create NHANES; we assembled an analysis file from three public CDC releases. Original creators: CDC National Center for Health Statistics (NHANES, DNA-methylation epigenetic biomarkers release, Linked Mortality Files). Funding of the original data: US federal. Funding of this analysis: UNKNOWN — to investigate (self-funded doctoral work).
+
+## 2. Composition
+
+Instances: NHANES participants. Cycles 1999-2000 and 2001-2002 (examination files DEMO/DEMO_B and laboratory files), adults aged 50 or older in the CDC DNA-methylation release with eligible linked mortality: 4,446 rows in the merged files (2,493 deaths); the CDC documentation states that participants without adequate blood or DNA, or without consent for future research use, appear in the file with a survey weight of 0; the primary analysis uses n=2530 (1359 deaths), those with a computable clock and BSI inputs; complete-case analysis n=1228. Variables used: age, sex, race/ethnicity (subgroups only), CRP, urinary albumin and creatinine, glucose, insulin, triglycerides, HbA1c, HDL, PhenoAge, vital status and follow-up months (to 31 Dec 2019). Missing data: the fasting-dependent markers are missing for many participants; in the primary analysis a missing marker is skipped inside its domain and counted as not-at-risk in the allostatic load; the complete-case analysis requires all seven. Sampling: complex survey; the methylation subsample includes about half of eligible non-Hispanic White participants and all eligible participants of other groups, so it is not nationally representative without the special weights (WTDN4YR). The CDC instructs analysts to use these weights for all analyses; here the primary analysis is unweighted and the weighted analysis is a sensitivity analysis only. Direct identifiers: none in the public-use files. Sensitive attributes: race/ethnicity, health status. Errors and noise: laboratory measurement error; mortality is linked to the National Death Index with a probabilistic (Fellegi-Sunter) algorithm; people without a match are assumed alive; the public-use file perturbs some follow-up times or causes of death with synthetic values (vital status unchanged); imputed probe values and removed samples in the methylation preprocessing make results depend on the CDC preprocessing choices.
+
+## 3. Collection process
+
+Collected by the CDC/NCHS in the NHANES examinations of 1999-2002 (blood and urine); DNA was extracted from whole blood stored at -80 C and methylation was measured with Illumina MethylationEPIC v1.0 arrays in the laboratory of Dr. Yongmei Liu at Duke University, then released by the CDC as a derived epigenetic-biomarker file (documentation first published 31 July 2024); mortality was ascertained by NCHS linkage to the National Death Index with follow-up to 31 December 2019. Only participants who consented to future research use of samples have positive weights in the methylation file (CDC documentation). Collection time frame: 1999-2002 with follow-up to 2019. We did not collect data ourselves. Details of laboratory protocols: see the CDC documentation; not re-verified here.
+
+## 4. Preprocessing / cleaning / labeling
+
+Cycles merged by participant ID; age >= 50; mortality files read with fixed-width positions (validated: only values 0/1); follow-up in months from the examination (from the interview if missing; deaths in month 0 coded 0.5 month, not dropped); markers log-transformed (CRP, insulin, triglycerides, albumin/creatinine ratio) with lower clipping; domain scores are z-scores averaged within domain; epigenetic acceleration = residual of PhenoAge on age; allostatic load = number of 7 markers in the worst quartile. Raw files are downloaded again at each run and are not stored in the repository. Code: this notebook and bsi_nhanes.py.
+
+## 5. Uses
+
+Used for: exploratory added-value analysis of the reduced BSI (this repository). Appropriate: reproducing this analysis; methodological teaching. Should NOT be used for: individual risk prediction or clinical decisions, claims about Adaptive Capacity or recovery (no perturbation in these data), insurance or employment decisions, or generalization to Peruvian or other non-US populations without validation. Risks: the methylation subsample is not representative of the US population without weights; mortality prediction in people aged 50 or older only; follow-up times in the public mortality file are partly synthetic.
+
+## 6. Distribution
+
+The source files are public-use files released by the CDC/NCHS, downloaded directly from CDC servers (wwwn.cdc.gov and ftp.cdc.gov); this repository redistributes no data, only code and results. NCHS terms for the linked mortality files: statistical reporting and analysis only, no re-identification, and publications must cite NCHS as the source with the NCHS disclaimer; the CpG-level methylation matrix is restricted and not used. License of the derived code and cards: UNKNOWN — to investigate. DOI for this repository: UNKNOWN — to investigate (Zenodo planned). Export controls or third-party restrictions: none known for these public-use files.
+
+## 7. Maintenance
+
+Maintainer: Aly Gallo Lopez (contact through the repository). Updates: none scheduled; the notebook is re-run if the CDC changes file locations (the download cell stops with a message listing failed files). Erratum policy: corrections are made as new commits, with earlier versions kept in the repository history. Mortality follow-up is fixed to 2019; extensions of follow-up: UNKNOWN — to investigate.
