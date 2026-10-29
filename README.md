@@ -2,22 +2,47 @@
 
 **Student:** Aly Gallo López · PhD in Deep Tech, FISI-UNMSM
 
-This repository is the cumulative record of my work for Classes 1–7. The doctoral project is **ChroniCare-AI**: a multimodal-temporal Biological State Index (BSI) built from hospital electronic health records, used to test whether biological state constrains *Adaptive Capacity*, defined as recovery after a physiological perturbation (the Biological State Hypothesis). The project follows the Design Science Research paradigm. Each row below links the evidence for one class and states honestly what is complete and what is still pending. Nothing here contains patient data or data under a data-use agreement.
+This repository is the cumulative record of my work for Classes 1–7. The doctoral project is **ChroniCare-AI**: a multimodal-temporal Biological State Index (BSI) built from hospital electronic health records, used to test whether biological state constrains *Adaptive Capacity*, defined as recovery after a physiological perturbation (the Biological State Hypothesis). The project follows the Design Science Research paradigm. Each item below links the evidence and states honestly what is complete and what is still pending. Nothing here contains patient data or data under a data-use agreement.
+
+## Where to look
+
+| What | Open this |
+|---|---|
+| Project idea and paradigm | [entregable1_final_EN.docx](entregable1_final_EN.docx) |
+| Method choice (fit matrix) | [entregable2_final_EN.docx](entregable2_final_EN.docx) |
+| Literature review and PRISMA diagram | [chronicare-prisma-recovery/README.md](chronicare-prisma-recovery/README.md) |
+| Baselines, seeds, ablation | [BSI_NHANES_ejercicios_1a6_ModelCard_Datasheet.ipynb](BSI_NHANES_ejercicios_1a6_ModelCard_Datasheet.ipynb) |
+| Reproducibility audit | [Git_audit_Biolearn_Aly_FINAL.ipynb](Git_audit_Biolearn_Aly_FINAL.ipynb) |
+| Model Card and Datasheet | [MODEL_CARD.md](MODEL_CARD.md), [DATASHEET.md](DATASHEET.md) |
+| Current protocol | [protocolo_v0.4.docx](protocolo_v0.4.docx) |
+| Limitations and next steps | section *What is not done* below |
 
 ## Index by class
 
-| Class | Topic | Evidence | Status |
+| Class | Topic | Main evidence | Status |
 |---|---|---|---|
-| 1 | Research idea and paradigm (Design Science Research) | [entregable1_final_EN.docx](entregable1_final_EN.docx) | Complete |
-| 2 | Method-fit matrix (weighted criteria, elimination rule) | [entregable2_final_EN.docx](entregable2_final_EN.docx) | Complete |
-| 3 | Research protocol (10 components) | **Current: [protocolo_v0.4.docx](protocolo_v0.4.docx)**. History: [protocolo_v0.3_EN.docx](protocolo_v0.3_EN.docx), [protocolo_FINAL.docx](protocolo_FINAL.docx), [addendum_v3_EN.docx](addendum_v3_EN.docx), [addendum_FINAL_EN.docx](addendum_FINAL_EN.docx) | v0.4 complete; registration pending (see below) |
-| 3 | Pre-data null simulation for the primary test (supports protocol §6.4.7) | [BSI_simulacion_nula_PE3_v2_completa.ipynb](BSI_simulacion_nula_PE3_v2_completa.ipynb) (full pipeline, executed, results saved in the notebook) | Complete; provisional until real sampling and noise are known |
-| 3 | Rehearsal of the protocol on real public data (VitalDB, open dataset, CC BY 4.0): feasibility, measurement noise, coupling and power | Notebooks 01 to 05 in [chronicare-prisma-recovery/vitaldb_rehearsal](chronicare-prisma-recovery/vitaldb_rehearsal) | Exploratory. Shows the primary test needs far more patients with two pre-operative draws than VitalDB offers; the choice of primary test is pending with Dr. Gaur |
-| 4 | Systematic review (PRISMA 2020), **current version v2**: recovery after a perturbation, PubMed + Scopus, 12 included studies | Start at [chronicare-prisma-recovery/README.md](chronicare-prisma-recovery/README.md). Report and PRISMA diagram: [Deliverable4_v2.docx](chronicare-prisma-recovery/deliverable4_v2/Deliverable4_v2.docx), [PRISMA_2020_flow_v2.png](chronicare-prisma-recovery/deliverable4_v2/PRISMA_2020_flow_v2.png). Screening: [PubMed](chronicare-prisma-recovery/screening/Screening_PubMed_125.xlsx), [Scopus](chronicare-prisma-recovery/screening/Screening_Scopus_103.xlsx). Extraction: [12 studies](chronicare-prisma-recovery/extraction/Extraction_12_included_studies.xlsx). Risk of bias: [QUIPS draft](chronicare-prisma-recovery/risk_of_bias/QUIPS_draft_12_studies.xlsx) | v2 complete (single reviewer; QUIPS is a draft). Not registered |
-| 4 | Systematic review **v1, superseded** (old objective: adverse-event prediction, Scopus only) | [Entregable4_EN.docx](Entregable4_EN.docx), [Cribado_Scopus_174.xlsx](Cribado_Scopus_174.xlsx) (copies also in [archive_superseded](chronicare-prisma-recovery/archive_superseded/v1)) | Kept as history; replaced by v2 because the project objective changed |
-| 5 | Reproducible ML pipeline | Separate repository: [Chronicare-ml-pipeline](https://github.com/alygallolopez-ship-it/Chronicare-ml-pipeline) (code, tests, per-seed results) | Complete |
+| 1 | Research idea and paradigm | [entregable1_final_EN.docx](entregable1_final_EN.docx) | Complete |
+| 2 | Method-fit matrix | [entregable2_final_EN.docx](entregable2_final_EN.docx) | Complete |
+| 3 | Research protocol, null simulation and VitalDB rehearsal | [protocolo_v0.4.docx](protocolo_v0.4.docx) | v0.4 complete; v0.5 pending |
+| 4 | Systematic review (PRISMA 2020), version 2 | [chronicare-prisma-recovery](chronicare-prisma-recovery/README.md) | v2 complete |
+| 5 | Reproducible ML pipeline | [Chronicare-ml-pipeline](https://github.com/alygallolopez-ship-it/Chronicare-ml-pipeline) (separate repository) | Complete |
 | 6 | Reproducibility audit (Biolearn) | [Git_audit_Biolearn_Aly_FINAL.ipynb](Git_audit_Biolearn_Aly_FINAL.ipynb) | Complete |
-| 7 | Baselines, seeds, ablation, Model Card, Datasheet, scorecard | [BSI_NHANES_ejercicios_1a6_ModelCard_Datasheet.ipynb](BSI_NHANES_ejercicios_1a6_ModelCard_Datasheet.ipynb), [MODEL_CARD.md](MODEL_CARD.md), [DATASHEET.md](DATASHEET.md) | Complete for NHANES; exploratory (see below) |
+| 7 | Baselines, seeds, ablation, Model Card, Datasheet, scorecard | [BSI_NHANES_ejercicios_1a6_ModelCard_Datasheet.ipynb](BSI_NHANES_ejercicios_1a6_ModelCard_Datasheet.ipynb) | Complete for NHANES; exploratory |
+
+## Details by class
+
+### Class 3: protocol and pre-data work
+- **Current protocol:** [protocolo_v0.4.docx](protocolo_v0.4.docx). History: [protocolo_v0.3_EN.docx](protocolo_v0.3_EN.docx), [protocolo_FINAL.docx](protocolo_FINAL.docx), [addendum_v3_EN.docx](addendum_v3_EN.docx), [addendum_FINAL_EN.docx](addendum_FINAL_EN.docx).
+- **Null simulation of the primary test** (supports protocol §6.4.7): [BSI_simulacion_nula_PE3_v2_completa.ipynb](BSI_simulacion_nula_PE3_v2_completa.ipynb). Full pipeline, executed, results saved in the notebook. Provisional until real sampling and noise are known.
+- **Rehearsal on real public data** (VitalDB, open dataset, CC BY 4.0): notebooks 01 to 05 in [chronicare-prisma-recovery/vitaldb_rehearsal](chronicare-prisma-recovery/vitaldb_rehearsal). It tests feasibility, measurement noise, coupling and statistical power. Main lesson: the primary test needs far more patients with two pre-operative draws than VitalDB offers. Exploratory; the choice of primary test is pending with Dr. Gaur.
+
+### Class 4: systematic review
+- **Version 2 (current).** Objective: recovery after a physiological perturbation. Databases: PubMed and Scopus. Flow: 334 records identified, 106 duplicates removed, 228 screened, 15 sought for retrieval, 12 studies included. Everything is in [chronicare-prisma-recovery](chronicare-prisma-recovery/README.md): the report and PRISMA diagram (`deliverable4_v2`), screening sheets, extraction sheet and a draft risk-of-bias table (QUIPS).
+- **Version 1 (superseded).** Old objective (adverse-event prediction), Scopus only: [Entregable4_EN.docx](Entregable4_EN.docx), [Cribado_Scopus_174.xlsx](Cribado_Scopus_174.xlsx). Kept as history because the project objective changed; copies are also in [archive_superseded](chronicare-prisma-recovery/archive_superseded/v1).
+
+### Class 7: baselines, seeds, ablation, documentation
+- Notebook with exercises 1 to 6: [BSI_NHANES_ejercicios_1a6_ModelCard_Datasheet.ipynb](BSI_NHANES_ejercicios_1a6_ModelCard_Datasheet.ipynb).
+- Documentation: [MODEL_CARD.md](MODEL_CARD.md) and [DATASHEET.md](DATASHEET.md).
 
 ## Supporting analyses (evidence behind Class 7 and protocol §4)
 
@@ -39,6 +64,6 @@ This repository is the cumulative record of my work for Classes 1–7. The docto
 
 - NHANES notebooks: open in Google Colab and choose *Runtime → Run all*. No upload is needed; all data are downloaded from the CDC.
 - Simulation notebook: open in Colab; for a quick test set `REPS=30, BOOT=10`; the full run (150 repetitions) takes about 20-25 minutes.
-- VitalDB rehearsal notebooks (folder above): saved without outputs; open in Colab and choose *Runtime → Run all*. The data are the public VitalDB open dataset and are not stored in this repository.
-- Systematic review v2: the screening and extraction tables are the record of every decision; the PRISMA counts in the diagram match the screening sheets.
+- VitalDB rehearsal notebooks: saved without outputs; open in Colab and choose *Runtime → Run all*. The data are the public VitalDB open dataset and are not stored in this repository.
+- Systematic review v2: the screening and extraction tables record every decision; the PRISMA counts in the diagram match the screening sheets.
 - MIDUS: requires obtaining the data from ICPSR under its data-use agreement.
