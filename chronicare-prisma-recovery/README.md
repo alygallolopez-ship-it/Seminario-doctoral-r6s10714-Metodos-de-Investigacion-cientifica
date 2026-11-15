@@ -22,7 +22,7 @@ Author: Aly Gallo · Seminario Doctoral (R6S10714), Doctorado en Deep Tech, FISI
 - Raw data. VitalDB data are downloaded by the notebooks from the VitalDB API (CC BY 4.0; Lee et al., Sci Data 2022, doi 10.13026/czw8-9p62 on PhysioNet).
 
 ## Reproducing the notebooks
-Open each notebook in Google Colab and choose Runtime, then Run all. Seeds are fixed (2026). Library versions are printed at the start of each run; they are not yet pinned.
+Open each notebook in Google Colab and choose Runtime, then Run all. Seeds are fixed (2026). Notebooks 01 to 05 are saved executed, with outputs (run of 27 Oct 2026), and their CSV tables are in `vitaldb_rehearsal/outputs/`. Python, pandas and numpy versions are in `vitaldb_rehearsal/requirements_vitaldb.txt`; the statsmodels version was not recorded in that run. Details in `vitaldb_rehearsal/README.md`.
 
 ## Limits
 Power figures in notebooks 02 to 05 come from simulations that assume shapes for the drop, the recovery and the ceiling. They are not clinical results.
