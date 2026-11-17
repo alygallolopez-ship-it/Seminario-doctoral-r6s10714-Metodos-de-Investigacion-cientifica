@@ -19,7 +19,7 @@ This repository is the cumulative record of my work for Classes 1–7. The docto
 
 ## Language and use of AI
 
-The protocol and deliverables are in English. Some notebooks (NHANES, MIDUS, VitalDB rehearsal, Notebook 6) and the column names of their CSV tables are in Spanish; each folder README gives an English glossary of the columns. Parts of this repository were prepared with the assistance of Claude (Anthropic): some commits are authored as "Claude", and the first screening pass of the systematic review was AI-assisted with a single human reviewer (stated in the screening sheets). The author is responsible for all content.
+The protocol and deliverables are in English. Some notebooks (NHANES, MIDUS, VitalDB rehearsal, Notebook 6) and the column names of their CSV tables are in Spanish; each folder README gives an English glossary of the columns. Parts of this repository were prepared with the assistance of Claude (Anthropic): some commits are authored as "Claude", and the first screening pass of the systematic review was AI-assisted with a single human reviewer (see the method note in the PubMed screening sheet). The author is responsible for all content.
 
 ## Where to look
 
