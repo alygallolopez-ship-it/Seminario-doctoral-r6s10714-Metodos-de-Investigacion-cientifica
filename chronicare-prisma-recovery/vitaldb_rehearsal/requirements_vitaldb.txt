@@ -1,7 +1,10 @@
-# Versions printed at the start of the executed run (Google Colab, 27 Oct 2026).
-# Only these three were recorded by the notebooks in that run.
-python==3.13.16
+# Library versions of the run that produced the notebooks and CSV files in this folder
+# (Google Colab, 17 Nov 2026; recorded by the last cell of each notebook).
+python==3.13.18
+numpy==2.4.6
 pandas==2.2.3
-numpy==2.1.3
-# statsmodels (QuantReg) was imported in notebooks 02 to 05 but its version was NOT recorded in that run.
-# It will be recorded on the next execution (see README.md in this folder).
+scipy==1.16.3
+statsmodels==0.15.0
+matplotlib==3.10.0
+# The earlier run of 27 Oct 2026 printed only: python 3.13.16, pandas 2.2.3, numpy 2.1.3.
+# Its numbers are identical to this run (see README.md).
