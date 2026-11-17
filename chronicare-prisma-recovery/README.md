@@ -12,6 +12,11 @@ Author: Aly Gallo · Seminario Doctoral (R6S10714), Doctorado en Deep Tech, FISI
 | `vitaldb_rehearsal/` | Five Google Colab notebooks that rehearse the protocol on the open VitalDB dataset (feasibility, null simulation, measurement noise, coupling and power, mean-level test). Recovery is simulated; no real health outcome is analysed. |
 | `archive_superseded/v1/` | Version 1 of Deliverable 4 (built for the previous objective) and its Scopus screening sheet (174 records). Kept unchanged as the record of the first Design Science Research cycle; do not cite. |
 
+## Notes for readers who cross-check the files
+- **Screening counts.** `screening/Screening_PubMed_125.xlsx` lists 13 included records and `Screening_Scopus_103.xlsx` lists 2 (15 in total). These are the counts **before full-text assessment**. After it, 2 reports were excluded and 1 could not be retrieved, leaving the **12** studies of the final review (see the sheet "Retirados tras revisión" in `extraction/Extraction_12_included_studies.xlsx`).
+- **Figure in the Deliverable.** `deliverable4_v2/Deliverable4_v2.docx` still embeds the version-2 flow diagram (identical to `PRISMA_2020_flow_v2.png`). The current diagram (v3, which adds the duplicate-removal and screening-method steps) is the separate file `PRISMA_2020_flow_v3.pdf`. The counts are the same in both.
+- **File names cited in the Deliverable.** The Deliverable cites working file names. In this repository they correspond to: `Cribado_PubMed_125_final.xlsx` = `screening/Screening_PubMed_125.xlsx`; `Cribado_Scopus_103.xlsx` = `screening/Screening_Scopus_103.xlsx`; `QUIPS_borrador_12.xlsx` = `risk_of_bias/QUIPS_draft_12_studies.xlsx`. Two cited files are **not yet in this repository**: `Revision_R3_R4.xlsx` and `Verificacion_ciega_20.xlsx` (the blind check of 20 exclusions).
+
 ## Version history
 - **v1** (early Oct 2026): objective was multimodal EHR prediction of adverse clinical events; Scopus only; 10 studies.
 - **v2** (26 Oct 2026): objective is recovery after a defined acute perturbation as a measure of adaptive capacity; PubMed and Scopus; 12 included studies.

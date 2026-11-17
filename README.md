@@ -4,11 +4,22 @@
 
 This repository is the cumulative record of my work for Classes 1–7. The doctoral project is **ChroniCare-AI**: a multimodal-temporal Biological State Index (BSI) built from hospital electronic health records, used to test whether biological state constrains *Adaptive Capacity*, defined as recovery after a physiological perturbation (the Biological State Hypothesis). The project follows the Design Science Research paradigm. Each item below links the evidence and states honestly what is complete and what is still pending. Nothing here contains patient data or data under a data-use agreement.
 
-## Latest update (12 November 2026)
+## Latest update (17 November 2026)
+
+- The five **VitalDB rehearsal notebooks (01 to 05)** were re-run from start to finish in Google Colab on 17 Nov 2026 and are saved with their outputs, the nine CSV tables, SHA-256 fingerprints and all library versions ([README](chronicare-prisma-recovery/vitaldb_rehearsal/README.md)). The numbers are identical to the 27 Oct run.
+- **Notebook 6** (simulation of the full PE3 pipeline, with a calibration grid and Monte Carlo error) is in [simulation_full_pipeline](simulation_full_pipeline/README.md). All simulated.
+- An **MIT licence** was added.
+- Protocol v0.5.1 has **not** been updated with these results yet; that is planned for the next version.
+
+## Earlier update (12 November 2026)
 
 - Protocol **v0.5.1** is now the current protocol (primary test: average association; ceiling contrast: secondary confirmatory). It is waiting for Dr. Gaur's evaluation.
 - The **PRISMA diagram v3** is in `chronicare-prisma-recovery/deliverable4_v2/` (v2 kept as a backup).
 - The **Biolearn audit notebook** now declares the seed, the datasets used and a data summary.
+
+## Language and use of AI
+
+The protocol and deliverables are in English. Some notebooks (NHANES, MIDUS, VitalDB rehearsal, Notebook 6) and the column names of their CSV tables are in Spanish; each folder README gives an English glossary of the columns. Parts of this repository were prepared with the assistance of Claude (Anthropic): some commits are authored as "Claude", and the first screening pass of the systematic review was AI-assisted with a single human reviewer (stated in the screening sheets). The author is responsible for all content.
 
 ## Where to look
 
@@ -21,6 +32,7 @@ This repository is the cumulative record of my work for Classes 1–7. The docto
 | Reproducibility audit | [Git_audit_Biolearn_Aly_FINAL.ipynb](Git_audit_Biolearn_Aly_FINAL.ipynb) |
 | Model Card and Datasheet | [MODEL_CARD.md](MODEL_CARD.md), [DATASHEET.md](DATASHEET.md) |
 | Current protocol | [protocolo_v0.5.1.docx](protocolo_v0.5.1.docx) |
+| Reference article (open access, CC BY 4.0) | [s41746-022-00712-8.pdf](s41746-022-00712-8.pdf): Kline A. et al. (2022), *Multimodal machine learning in precision health: a scoping review*, npj Digital Medicine, doi:10.1038/s41746-022-00712-8. Redistributed under the CC BY 4.0 licence of the article. |
 | Limitations and next steps | section *What is not done* below |
 
 ## Index by class
@@ -62,7 +74,7 @@ This repository is the cumulative record of my work for Classes 1–7. The docto
 - **Adaptive Capacity (PE3) has not been tested.** The NHANES and MIDUS analyses are cross-sectional or single-challenge and cannot test it; they are exploratory evidence about the BSI only.
 - **The BSI added a small gain in NHANES** (ΔC +0.007, 95% CI 0.003 to 0.011) that did **not** exceed the same markers used as continuous variables, and it added nothing in MIDUS. Reported as findings, not hidden.
 - **Exercises 1–3 are exploratory**, run after the primary analysis was fixed and on the same data. The domain ablation is post hoc and does not change the BSI definition.
-- **Not assessed:** calibration, net benefit, external validation. Licence and DOI of this repository: UNKNOWN (Zenodo planned).
+- **Not assessed:** calibration, net benefit, external validation. Licence of this repository: MIT (see `LICENSE`). DOI: not yet assigned (Zenodo planned).
 - **Sample-size numbers for PE3 are provisional**, from a parametric simulation with assumed noise. The calibration over a grid of coupling and noise values has now been run in [Notebook 6](simulation_full_pipeline/README.md) (simulated data, assumed generator); the protocol text (§6.4.7) has **not been updated** with it yet.
 - **Pending decisions and registration:** protocol v0.5.1 is written and uploaded; it proposes the mean-level association as primary and the ceiling contrast as secondary confirmatory (based on the VitalDB rehearsal), which differs from the ceiling-first recommendation. It waits for Dr. Gaur's evaluation. OSF pre-registration comes after that (and after the empirical simulation); UNMSM ethics committee (not yet open for filing); data access from the hospital (in process).
 - **Systematic review v2:** one reviewer, one pass; the risk-of-bias table is a draft without a second reviewer. The VitalDB numbers are a rehearsal with assumed noise and an approximate coupling estimate, not results about the hypothesis.
