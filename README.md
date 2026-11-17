@@ -39,7 +39,8 @@ This repository is the cumulative record of my work for Classes 1–7. The docto
 
 ### Class 3: protocol and pre-data work
 - **Current protocol:** [protocolo_v0.5.1.docx](protocolo_v0.5.1.docx). History: [protocolo_v0.4.docx](protocolo_v0.4.docx), [protocolo_v0.3_EN.docx](protocolo_v0.3_EN.docx), [protocolo_FINAL.docx](protocolo_FINAL.docx), [addendum_v3_EN.docx](addendum_v3_EN.docx), [addendum_FINAL_EN.docx](addendum_FINAL_EN.docx).
-- **Null simulation of the ceiling contrast** (supports protocol §6.4.7): [BSI_simulacion_nula_PE3_v2_completa.ipynb](BSI_simulacion_nula_PE3_v2_completa.ipynb). Full pipeline, executed, results saved in the notebook. Provisional until real sampling and noise are known.
+- **Null simulation of the ceiling contrast** (supports protocol §6.4.7): [BSI_simulacion_nula_PE3_v2_completa.ipynb](BSI_simulacion_nula_PE3_v2_completa.ipynb). This is the **earlier** null simulation (simple slope on the recovered fraction, 150 repetitions); the more complete one is Notebook 6 below. Provisional until real sampling and noise are known.
+- **Simulation of the full PE3 pipeline (Notebook 6)**, written in response to Dr. Gaur's review: [simulation_full_pipeline](simulation_full_pipeline/README.md). Same outcome and same process as the primary test, a calibration grid of coupling × noise, at least 1,000 repetitions with Monte Carlo error, power and sufficiency criteria. All simulated; the assumptions stand until the hospital data dictionary is available.
 - **Rehearsal on real public data** (VitalDB, open dataset, CC BY 4.0): notebooks 01 to 05 in [chronicare-prisma-recovery/vitaldb_rehearsal](chronicare-prisma-recovery/vitaldb_rehearsal). It tests feasibility, measurement noise, coupling and statistical power. Main lesson: the primary test needs far more patients with two pre-operative draws than VitalDB offers. Exploratory. Protocol v0.5.1 adopts the average association as the primary test and keeps the ceiling contrast as the secondary confirmatory analysis; this choice is pending Dr. Gaur's evaluation.
 
 ### Class 4: systematic review
@@ -62,15 +63,16 @@ This repository is the cumulative record of my work for Classes 1–7. The docto
 - **The BSI added a small gain in NHANES** (ΔC +0.007, 95% CI 0.003 to 0.011) that did **not** exceed the same markers used as continuous variables, and it added nothing in MIDUS. Reported as findings, not hidden.
 - **Exercises 1–3 are exploratory**, run after the primary analysis was fixed and on the same data. The domain ablation is post hoc and does not change the BSI definition.
 - **Not assessed:** calibration, net benefit, external validation. Licence and DOI of this repository: UNKNOWN (Zenodo planned).
-- **Sample-size numbers for PE3 are provisional**, from a parametric simulation with assumed noise. The calibration over a grid of coupling and noise values described in protocol §6.4.7 has **not been re-run yet**.
+- **Sample-size numbers for PE3 are provisional**, from a parametric simulation with assumed noise. The calibration over a grid of coupling and noise values has now been run in [Notebook 6](simulation_full_pipeline/README.md) (simulated data, assumed generator); the protocol text (§6.4.7) has **not been updated** with it yet.
 - **Pending decisions and registration:** protocol v0.5.1 is written and uploaded; it proposes the mean-level association as primary and the ceiling contrast as secondary confirmatory (based on the VitalDB rehearsal), which differs from the ceiling-first recommendation. It waits for Dr. Gaur's evaluation. OSF pre-registration comes after that (and after the empirical simulation); UNMSM ethics committee (not yet open for filing); data access from the hospital (in process).
 - **Systematic review v2:** one reviewer, one pass; the risk-of-bias table is a draft without a second reviewer. The VitalDB numbers are a rehearsal with assumed noise and an approximate coupling estimate, not results about the hypothesis.
 
 ## How to reproduce
 
 - NHANES notebooks: open in Google Colab and choose *Runtime → Run all*. No upload is needed; all data are downloaded from the CDC.
-- Simulation notebook: open in Colab; for a quick test set `REPS=30, BOOT=10`; the full run (150 repetitions) takes about 20-25 minutes.
-- VitalDB rehearsal notebooks: saved without outputs; open in Colab and choose *Runtime → Run all*. The data are the public VitalDB open dataset and are not stored in this repository.
+- Notebook 6 (full pipeline): see [its README](simulation_full_pipeline/README.md).
+- Earlier simulation notebook: open in Colab; for a quick test set `REPS=30, BOOT=10`; the full run (150 repetitions) takes about 20-25 minutes.
+- VitalDB rehearsal notebooks: saved with the outputs of the 17 Nov 2026 run (see their README); to repeat, open in Colab and choose *Runtime → Run all*. The data are the public VitalDB open dataset and are not stored in this repository.
 - Biolearn audit: open in Colab and choose *Runtime → Run all* (about 10 to 15 minutes). The seed (`SEED = 42`), the datasets used and a data summary are declared at the top of the notebook.
 - Systematic review v2: the screening and extraction tables record every decision; the PRISMA counts in the diagram match the screening sheets.
 - MIDUS: requires obtaining the data from ICPSR under its data-use agreement.
