@@ -63,3 +63,18 @@ Open `sim6_resumen_por_n.csv` and `sim6_poder_suficiencia.csv` together with `si
 - All numbers come from assumed generator parameters; they are provisional until the hospital's noise, sampling pattern and coupling are known.
 - The Monte Carlo error is not zero: compare differences between cells with the `error_MC` columns.
 - The earlier null-simulation notebook in the repository root (`BSI_simulacion_nula_PE3_v2_completa.ipynb`) is the previous version of this work (simple slope on the recovered fraction, 150 repetitions). This folder supersedes it for the primary test.
+
+## Simulation 7 (protocol v0.6, one-sided alpha 0.025)
+
+Same generator and seeds as Notebook 6 (`fullsim2.py` only adds outputs; with the 95th percentile it reproduces the Notebook 6 critical values). Added: one-sided alpha 0.025 (97.5th percentile), sensitivity (7), several D_min thresholds for F, and the ceiling contrast for F. All data are simulated.
+
+| File | Content |
+|---|---|
+| `fullsim2.py`, `run_sim7.py`, `analizar7.py` | simulator, runner (about 30 min on 2 cores), analysis |
+| `sim7_valores_criticos.csv` | critical values at alpha 0.05 and 0.025 |
+| `sim7_tamano.csv`, `sim7_poder_suficiencia.csv` | size, power and sufficiency per cell |
+| `sim7_sensibilidad7_regla.csv` | sensitivity (7) null slope and the registered decision rule |
+| `sim7_Dmin_F.csv` | F with D_min = 0.1, 0.25, 0.5, 1.0 |
+| `sim7_techo_dbeta.csv` | ceiling contrast for R and F |
+
+Main findings: sufficiency at N=738 is unchanged (R 4/12 cells, F 8/12); the sign of sensitivity (7) does not discriminate (its null slope is positive in 100% of null replicates); the ceiling contrast does not reach 0.80 for a moderate ceiling for R or F. The generator applies the ceiling to the recoverable fraction, which favours F.
