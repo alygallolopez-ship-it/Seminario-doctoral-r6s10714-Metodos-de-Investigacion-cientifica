@@ -1,0 +1,13 @@
+{
+  "sim6_nulo_por_celda.csv": "a4a67234e6da95f7",
+  "sim6_valores_criticos.csv": "ac91c9981c1fa3e4",
+  "sim6_tamano_verificacion.csv": "606ac0bc27b0be15",
+  "sim6_poder_suficiencia.csv": "5a64ff89ded6f359",
+  "sim6_resumen_por_n.csv": "35a86db74eff50e1",
+  "sim6_malla_acotada.csv": "804b4af7eb1bc574",
+  "sim6_techo_dbeta.csv": "4fce53178c276678",
+  "sim6_parametros.json": "daf1ce6e4789b1be",
+  "requirements_sim6.txt": "ab136d0f9a24c950",
+  "sim6_figura.png": "5b79315a4436dc27",
+  "fullsim.py": "ab952b938f487b29"
+}

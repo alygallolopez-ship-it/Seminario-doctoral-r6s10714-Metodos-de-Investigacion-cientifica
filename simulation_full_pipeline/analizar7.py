@@ -1,5 +1,5 @@
 import sys, pickle, numpy as np, pandas as pd
-D = sys.argv[1]; OUTD = sys.argv[2]  # D = carpeta con R.pkl y RC.pkl (salida de run_sim7.py)
+D = sys.argv[1]; OUTD = sys.argv[2]  # D = folder with R.pkl and RC.pkl (output of run_sim7.py)
 R_ = pickle.load(open(D + "/R.pkl", "rb")); RC = pickle.load(open(D + "/RC.pkl", "rb"))
 N_EL = [500, 738, 1000, 2000, 3000, 5000]; NOISES = [0.15, 0.30, 0.60]; CS = [0.0, 0.12, 0.24, 0.36]
 EFFECTS = [0.05, 0.10]; OUT = ["R", "F", "Rb"]; N_CEIL = [738, 2000, 5000]; NZC = [0.15, 0.30]; CSC = [0.0, 0.36]
@@ -19,8 +19,8 @@ for i, n in enumerate(N_EL):
             v, j, k = crit(i, oc, p); r["vc_" + tag] = v; r["celda_" + tag] = f"ruido {NOISES[j]}, c {CS[k]}"
         rows.append(r)
 vc = pd.DataFrame(rows); vc.to_csv(OUTD + "/sim7_valores_criticos.csv", index=False)
-print("VALORES CRITICOS"); print(vc.round(4).to_string(index=False))
-# tamaño y poder (alfa 0.025), suficiencia
+print("CRITICAL VALUES"); print(vc.round(4).to_string(index=False))
+# size and power (alpha 0.025), sufficiency
 tam, pot = [], []
 for i, n in enumerate(N_EL):
     cv = {oc: crit(i, oc, 97.5)[0] for oc in OUT}
@@ -38,19 +38,19 @@ for i, n in enumerate(N_EL):
                                     suficiente=(pw >= 0.8) and (sa <= dref)))
 tam = pd.DataFrame(tam); pot = pd.DataFrame(pot)
 tam.to_csv(OUTD + "/sim7_tamano.csv", index=False); pot.to_csv(OUTD + "/sim7_poder_suficiencia.csv", index=False)
-print("\nTAMAÑO (alfa 0.025): maximo y media sobre la malla")
+print("\nSIZE (alpha 0.025): maximum and mean over the grid")
 print(tam.groupby(["resultado", "n"]).tamano.agg(["max", "mean"]).round(3).unstack(0).to_string())
-print("\nSUFICIENCIA (efecto 0.10): celdas suficientes de 12, por N")
+print("\nSUFFICIENCY (effect 0.10): sufficient cells out of 12, per N")
 sf = pot[pot.efecto == 0.10].groupby(["resultado", "n"]).suficiente.sum().unstack(0); print(sf.to_string())
-print("\nPODER efecto 0.10 N=738 por celda (R / F)")
+print("\nPOWER effect 0.10 N=738 per cell (R / F)")
 for oc in ("R", "F"):
     g = pot[(pot.n == 738) & (pot.efecto == 0.10) & (pot.resultado == oc)].pivot(index="c", columns="ruido", values="poder"); print(oc); print(g.round(3).to_string())
-print("\nPODER efecto 0.05 N=738 (R / F)")
+print("\nPOWER effect 0.05 N=738 (R / F)")
 for oc in ("R", "F"):
     g = pot[(pot.n == 738) & (pot.efecto == 0.05) & (pot.resultado == oc)].pivot(index="c", columns="ruido", values="poder"); print(oc); print(g.round(3).to_string())
-print("\nSUFICIENCIA por celda N=738 efecto 0.10 (R)")
+print("\nSUFFICIENCY per cell N=738 effect 0.10 (R)")
 print(pot[(pot.n == 738) & (pot.efecto == 0.10) & (pot.resultado == "R")].pivot(index="c", columns="ruido", values="suficiente").to_string())
-# sensibilidad 7 y regla de decision compuesta (N=738)
+# sensitivity 7 and composite decision rule (N=738)
 sr = []
 for i, n in enumerate(N_EL):
     cvR = crit(i, "R", 97.5)[0]
@@ -67,9 +67,9 @@ for i, n in enumerate(N_EL):
                 row[f"P_b7_pos_{eff}"] = float(np.mean(alt["b7"] > 0)); row[f"P_bF_pos_{eff}"] = float(np.mean(alt["b_F"] > 0))
             sr.append(row)
 sr = pd.DataFrame(sr); sr.to_csv(OUTD + "/sim7_sensibilidad7_regla.csv", index=False)
-print("\nSENSIBILIDAD 7 y REGLA COMPUESTA (a: b_R>vc; b: F>0; c: b7>0), N=738")
+print("\nSENSITIVITY 7 and COMPOSITE RULE (a: b_R>vc; b: F>0; c: b7>0), N=738")
 print(sr[sr.n == 738].round(3).to_string(index=False))
-print("tamano maximo de la regla (todas las celdas y N):", round(sr.tamano_regla.max(), 4))
+print("maximum size of the rule (all cells and N):", round(sr.tamano_regla.max(), 4))
 # D_min
 dm = []
 i = N_EL.index(738)
@@ -83,11 +83,11 @@ for thr in ("0.1", "0.25", "0.5", "1.0"):
             dm.append(dict(D_min=float(thr), ruido=nz, c=c, vc=cv, tamano=float(np.nanmean(ver > cv)), poder_0_10=float(np.nanmean(alt > cv)),
                            eventos_retenidos=float(np.nanmean(nul[evk])), frac_F_recortada=float(np.nanmean(nul[rk])), sd_b_nula=float(np.nanstd(nul[key]))))
 dm = pd.DataFrame(dm); dm.to_csv(OUTD + "/sim7_Dmin_F.csv", index=False)
-print("\nUMBRAL D_min para F (N=738): resumen por umbral")
+print("\nD_min THRESHOLD for F (N=738): summary per threshold")
 print(dm.groupby("D_min").agg(vc=("vc", "first"), tamano_max=("tamano", "max"), poder_min=("poder_0_10", "min"), poder_mediano=("poder_0_10", "median"),
                               eventos=("eventos_retenidos", "mean"), recortada=("frac_F_recortada", "mean"), sd_nula=("sd_b_nula", "mean")).round(3).to_string())
-print("poder F por umbral y ruido (mediana sobre c):"); print(dm.groupby(["D_min", "ruido"]).poder_0_10.median().unstack().round(3).to_string())
-# techo
+print("power of F per threshold and noise (median over c):"); print(dm.groupby(["D_min", "ruido"]).poder_0_10.median().unstack().round(3).to_string())
+# ceiling
 ce = []
 for i, n in enumerate(N_CEIL):
     cd = {oc: max(np.percentile(RC[(100 + i, j, k, 4)]["dbeta_" + oc], 97.5) for j in range(2) for k in range(2)) for oc in ("R", "F")}
@@ -102,6 +102,6 @@ for i, n in enumerate(N_CEIL):
                                    poder_a025=float(np.mean(r["dbeta_" + oc] > cd[oc])), poder_a05=float(np.mean(r["dbeta_" + oc] > cd95[oc])),
                                    tamano_celda_a025=float(np.mean(nulc["dbeta_" + oc] > cd[oc]))))
 ce = pd.DataFrame(ce); ce.to_csv(OUTD + "/sim7_techo_dbeta.csv", index=False)
-print("\nCONTRASTE DEL TECHO: poder maximo por N, resultado y fuerza del techo (alfa 0.025 / 0.05)")
+print("\nCEILING CONTRAST: maximum power per N, outcome and ceiling strength (alpha 0.025 / 0.05)")
 print(ce.groupby(["resultado", "techo", "n"]).agg(vc=("vc_dbeta_a025", "first"), poder_max_025=("poder_a025", "max"), poder_max_05=("poder_a05", "max")).round(3).to_string())
-print("tamano max por celda (techo, N):", ce.groupby("resultado").tamano_celda_a025.max().round(3).to_dict())
+print("maximum size per cell (ceiling, N):", ce.groupby("resultado").tamano_celda_a025.max().round(3).to_dict())

@@ -4,7 +4,7 @@ Simulation study for protocol v0.5.1 (ChroniCare-AI), written in response to Dr.
 
 **Everything here is simulated. No real data of any kind is used** (`"datos_reales": "ninguno (todo simulado)"` in `sim6_parametros.json`). The data-generating model (measurement noise, sampling pattern, shape of recovery) rests on **assumptions** taken from the VitalDB rehearsal. Definitive numbers must be recomputed with the real noise, measurement frequency and coupling once the hospital data dictionary is available. Nothing in this folder is a result about the Biological State Hypothesis.
 
-The notebook and the comments in `fullsim.py` are written in Spanish; file and column names are in Spanish too.
+The notebook text and the code comments are in English (translated on 19 November 2026 from the Spanish originals, which are kept unchanged in the `archive_original_runs/` folder). File names, variable names and CSV column names remain in Spanish so that the published files and their fingerprints stay valid; see the glossary below. The translation changed no formula, seed or logic: after removing comments, docstrings and printed text, the abstract syntax trees of the English and Spanish code are identical, and `fullsim.py` and `fullsim2.py` give identical arrays for the same seed.
 
 ## What the notebook does
 
@@ -21,11 +21,13 @@ The same pipeline is run on three outcomes: **R** (recovery, the primary outcome
 
 | File | What it is |
 |---|---|
-| `Cuaderno6_simulacion_pipeline_completo.ipynb` | The executed notebook (all code cells with outputs). Run it in Google Colab. |
+| `Notebook6_full_pipeline_simulation.ipynb` | English version of the notebook, without saved outputs. Run it in Google Colab. |
 | `fullsim.py` | The simulator and the analysis, written by the notebook (step 1). |
 | `requirements_sim6.txt` | Pinned library versions of the run. |
 | `sim6_parametros.json` | Seed, grids, repetitions, library versions. |
-| `sim6_huellas.json` | First 16 hex characters of the SHA-256 of each output file. |
+| `sim6_huellas.json` | First 16 hex characters of the SHA-256 of each output file. Only the entry for `fullsim.py` differs from the original (`archive_original_runs/sim6_huellas.json`), because its comments were translated; the output files are the same. |
+| `Notebook7_reproduce_simulation7.ipynb` | English notebook that re-runs Simulation 7 from scratch and compares the results with the published `sim7_*.csv` files (see the last section). |
+| `archive_original_runs/` | Unmodified records of the original runs, kept as evidence: the original Spanish notebook, scripts and fingerprints, and the researcher's Colab reproduction of Simulation 7. It has its own README. |
 | `sim6_figura.png` | Summary figure. |
 | `sim6_nulo_por_celda.csv` | Null slope, SD and 95th percentile for each grid cell. |
 | `sim6_valores_criticos.csv` | Critical value per N: the largest 95th percentile over the whole grid, and which cell sets it. |
@@ -78,3 +80,7 @@ Same generator and seeds as Notebook 6 (`fullsim2.py` only adds outputs; with th
 | `sim7_techo_dbeta.csv` | ceiling contrast for R and F |
 
 Main findings: sufficiency at N=738 is unchanged (R 4/12 cells, F 8/12); the sign of sensitivity (7) does not discriminate (its null slope is positive in 100% of null replicates); the ceiling contrast does not reach 0.80 for a moderate ceiling for R or F. The generator applies the ceiling to the recoverable fraction, which favours F.
+
+## Independent reproduction of Simulation 7 (19 November 2026)
+
+The researcher re-ran Simulation 7 in full in Google Colab (Python 3.13, numpy 2.4.6, 2 cores, 2 h 47 min) with `Notebook7_reproduce_simulation7.ipynb`, using the repository code at commit `6904c12`; the executed notebook is saved as `Notebook7_executed_colab_2026-11-19.ipynb` (its printed headers are in Spanish because it ran the original Spanish scripts). Five of the six output files (`sim7_valores_criticos.csv`, `sim7_tamano.csv`, `sim7_poder_suficiencia.csv`, `sim7_sensibilidad7_regla.csv`, `sim7_Dmin_F.csv`) were identical to the published ones (maximum difference about 1e-16). The sixth, `sim7_techo_dbeta.csv` (ceiling contrast, exploratory), differed slightly: maximum difference 0.013 in power (4 of 300 replicates); the maximum power of the ceiling contrast for the R-based AC was 0.050 with 738 patients and 0.057 with 5,000, against 0.050 and 0.060 in the original run. The probable cause is a platform-dependent numerical difference in the quantile-regression fit (not verified). No conclusion changes.

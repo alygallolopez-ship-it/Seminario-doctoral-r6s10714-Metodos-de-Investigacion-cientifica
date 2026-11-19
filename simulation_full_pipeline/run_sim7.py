@@ -1,5 +1,5 @@
-"""Simulacion 7: repite la malla de la Simulacion 6 (mismas semillas y generador) guardando TODAS las repeticiones,
-con las adiciones del protocolo v0.6 (sensibilidad 7, umbrales D_min, contraste del techo para F). Todo simulado."""
+"""Simulation 7: repeats the grid of Simulation 6 (same seeds and generator) saving ALL the repetitions,
+with the additions of protocol v0.6 (sensitivity 7, D_min thresholds, ceiling contrast for F). Everything simulated."""
 import sys, time, pickle, numpy as np
 from joblib import Parallel, delayed
 import fullsim2 as FS
@@ -28,6 +28,6 @@ for i, n in enumerate(N_CEIL):
                 ctasks.append(((100 + i, j, k, 5 + e), REPS_CEIL, n, nz, c, "ceiling", 0.0, tc, True))
 t0 = time.time()
 RC = dict(Parallel(n_jobs=2)(delayed(tarea)(*t) for t in ctasks))
-pickle.dump(RC, open(sys.argv[1] + "/RC.pkl", "wb")); print("techo listo", round((time.time() - t0) / 60, 1), "min", flush=True)
+pickle.dump(RC, open(sys.argv[1] + "/RC.pkl", "wb")); print("ceiling ready", round((time.time() - t0) / 60, 1), "min", flush=True)
 R_ = dict(Parallel(n_jobs=2, verbose=1)(delayed(tarea)(*t) for t in tasks))
-pickle.dump(R_, open(sys.argv[1] + "/R.pkl", "wb")); print("malla lista", round((time.time() - t0) / 60, 1), "min", flush=True)
+pickle.dump(R_, open(sys.argv[1] + "/R.pkl", "wb")); print("grid ready", round((time.time() - t0) / 60, 1), "min", flush=True)
