@@ -46,6 +46,7 @@ The protocol and deliverables are in English. Some notebooks (NHANES, MIDUS, Vit
 | 5 | Reproducible ML pipeline | [Chronicare-ml-pipeline](https://github.com/alygallolopez-ship-it/Chronicare-ml-pipeline) (separate repository) | Complete |
 | 6 | Reproducibility audit (Biolearn) | [Git_audit_Biolearn_Aly_FINAL.ipynb](Git_audit_Biolearn_Aly_FINAL.ipynb) | Complete |
 | 7 | Baselines, seeds, ablation, Model Card, Datasheet, scorecard | [BSI_NHANES_ejercicios_1a6_ModelCard_Datasheet.ipynb](BSI_NHANES_ejercicios_1a6_ModelCard_Datasheet.ipynb) | Complete for NHANES; exploratory |
+| 11 | Data Management Plan and legal compliance checklist | [Session11_DMP_and_Compliance_Checklist_Aly_Gallo.docx](Session11_DMP_and_Compliance_Checklist_Aly_Gallo.docx) | Plan complete; checklist 4 Yes, 2 N/A, 6 pending (they depend on IETSI, the hospital and the ethics committee) |
 
 ## Details by class
 
@@ -58,6 +59,9 @@ The protocol and deliverables are in English. Some notebooks (NHANES, MIDUS, Vit
 ### Class 4: systematic review
 - **Version 2 (current).** Objective: recovery after a physiological perturbation. Databases: PubMed and Scopus. Flow: 334 records identified, 106 duplicates removed, 228 screened, 15 sought for retrieval, 12 studies included. Everything is in [chronicare-prisma-recovery](chronicare-prisma-recovery/README.md): the report and PRISMA diagram (`deliverable4_v2`; diagram v3, `PRISMA_2020_flow_v3.pdf`, adds the duplicate-removal and screening-method steps, and the v2 figure is kept as a backup), screening sheets, extraction sheet and a draft risk-of-bias table (QUIPS).
 - **Version 1 (superseded).** Old objective (adverse-event prediction), Scopus only: [Entregable4_EN.docx](Entregable4_EN.docx), [Cribado_Scopus_174.xlsx](Cribado_Scopus_174.xlsx). Kept as history because the project objective changed; copies are also in [archive_superseded](chronicare-prisma-recovery/archive_superseded/v1).
+
+### Class 11: data management and legal compliance
+- [Session11_DMP_and_Compliance_Checklist_Aly_Gallo.docx](Session11_DMP_and_Compliance_Checklist_Aly_Gallo.docx): seven-section Data Management Plan and the twelve-point checklist, with the real access status of each data source. No formal data-access request has been filed yet and there is no data-use agreement or ethics approval; the open checklist items are listed with the action that closes each one. No patient data are in this repository.
 
 ### Class 7: baselines, seeds, ablation, documentation
 - Notebook with exercises 1 to 6: [BSI_NHANES_ejercicios_1a6_ModelCard_Datasheet.ipynb](BSI_NHANES_ejercicios_1a6_ModelCard_Datasheet.ipynb).
